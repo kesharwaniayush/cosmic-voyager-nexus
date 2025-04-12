@@ -1,3 +1,4 @@
+import { MoonInfo, PlanetInfo } from './planetData';
 
 export interface MoonInfo {
   name: string;
@@ -52,6 +53,7 @@ export const planetData: PlanetInfo[] = [
     tilt: 7.25,
     composition: "The Sun is composed primarily of hydrogen (73%) and helium (25%) with trace amounts of oxygen, carbon, neon and iron.",
     funFact: "The Sun contains 99.86% of the mass in the Solar System. About one million Earths would be needed to match the size of the Sun.",
+    image: '/planets/sun.png'
   },
   {
     id: "mercury",
@@ -73,6 +75,7 @@ export const planetData: PlanetInfo[] = [
     atmosphere: "Minimal - Sodium, Potassium, Oxygen",
     composition: "Mercury is primarily composed of rock and metals, with a large iron core that makes up about 60% of its mass.",
     funFact: "Mercury's day is longer than its year! It takes 88 Earth days to orbit the Sun but 176 Earth days to rotate once on its axis.",
+    image: '/planets/mercury.png'
   },
   {
     id: "venus",
@@ -95,6 +98,7 @@ export const planetData: PlanetInfo[] = [
     atmosphere: "Carbon Dioxide, Nitrogen, Sulfuric Acid",
     composition: "Venus has a central iron core and a rocky mantle, similar to the composition of Earth.",
     funFact: "Venus rotates backwards compared to most planets, so the Sun rises in the west and sets in the east!",
+    image: '/planets/venus.png'
   },
   {
     id: "earth",
@@ -124,6 +128,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Earth is the only planet not named after a god. The name comes from the Old English and Germanic words for 'ground'.",
+    image: '/planets/earth.png'
   },
   {
     id: "mars",
@@ -158,6 +163,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Mars is home to Olympus Mons, the largest volcano and highest known mountain in the Solar System.",
+    image: '/planets/mars.png'
   },
   {
     id: "jupiter",
@@ -208,6 +214,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Jupiter's Great Red Spot is a giant storm that has been raging for at least 400 years. It's so big that three Earths could fit inside it!",
+    image: '/planets/jupiter.png'
   },
   {
     id: "saturn",
@@ -268,6 +275,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Saturn's rings are made mostly of ice particles with a smaller amount of rocky debris and dust. Some of these particles are as small as a grain of sand, while others are as large as mountains.",
+    image: '/planets/saturn.png'
   },
   {
     id: "uranus",
@@ -317,6 +325,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Uranus rotates on its side, with its axis nearly pointing at the Sun during parts of its orbit. This gives it extreme seasons that last for decades!",
+    image: '/planets/uranus.png'
   },
   {
     id: "neptune",
@@ -367,7 +376,8 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Neptune has the strongest winds in the Solar System, reaching speeds of 2,100 km/h (1,300 mph).",
-    discovery: "Discovered in 1846 based on mathematical predictions rather than observation."
+    discovery: "Discovered in 1846 based on mathematical predictions rather than observation.",
+    image: '/planets/neptune.png'
   },
   {
     id: "pluto",
@@ -417,6 +427,7 @@ export const planetData: PlanetInfo[] = [
       }
     ],
     funFact: "Pluto's orbit is so elliptical that at times it's actually closer to the Sun than Neptune!",
-    discovery: "Discovered in 1930 by Clyde Tombaugh."
+    discovery: "Discovered in 1930 by Clyde Tombaugh.",
+    image: '/planets/pluto.png'
   }
 ];
