@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,6 +53,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+                space: {
+                    dark: '#0A1128',
+                    navy: '#1C2541',
+                    blue: '#3A506B',
+                    teal: '#5BC0BE',
+                    aqua: '#6FFFE9',
+                    purple: '#7303c0',
+                    violet: '#3500D3',
+                },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +94,31 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'orbit': {
+                    '0%': { transform: 'rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg)' }
+                },
+                'pulse-glow': {
+                    '0%, 100%': { opacity: '0.6' },
+                    '50%': { opacity: '1' }
+                },
+                'float': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' }
+                },
+                'star-twinkle': {
+                    '0%, 100%': { opacity: '0.3' },
+                    '50%': { opacity: '1' }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'orbit': 'orbit var(--orbit-duration) linear infinite',
+                'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'star-twinkle': 'star-twinkle 4s ease-in-out infinite'
 			}
 		}
 	},
