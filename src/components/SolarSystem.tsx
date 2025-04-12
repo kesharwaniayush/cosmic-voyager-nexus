@@ -1,8 +1,8 @@
 
 import { useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame, useThree, extend } from '@react-three/fiber';
-import { OrbitControls, Stars, Html, useTexture, Text } from '@react-three/drei';
-import { Vector3 } from 'three';
+import * as THREE from 'three';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, Stars, Html, Text } from '@react-three/drei';
 import { planetData, PlanetInfo } from '@/lib/planetData';
 import PlanetCard from './PlanetCard';
 
@@ -59,7 +59,7 @@ const Planet = ({ planet, timeSpeed, onClick, selected }: PlanetProps) => {
   });
   
   return (
-    <group>
+    <>
       {/* Orbit Path */}
       <mesh rotation-x={Math.PI / 2}>
         <ringGeometry args={[orbitRadius, orbitRadius + 0.02, 120]} />
@@ -99,7 +99,7 @@ const Planet = ({ planet, timeSpeed, onClick, selected }: PlanetProps) => {
           </Html>
         </mesh>
       </group>
-    </group>
+    </>
   );
 };
 

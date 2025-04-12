@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Home, Planet, Info, Rocket, Sun } from 'lucide-react';
+import { Menu, X, Home, Globe, Info, Rocket, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
@@ -22,7 +22,7 @@ const Navigation = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-4">
           <NavLink to="/" icon={<Home size={18} />} label="Home" />
-          <NavLink to="/planets" icon={<Planet size={18} />} label="Planets" />
+          <NavLink to="/planets" icon={<Globe size={18} />} label="Planets" />
           <NavLink to="/about" icon={<Info size={18} />} label="About" />
           <NavLink to="/missions" icon={<Rocket size={18} />} label="Missions" />
         </div>
@@ -42,7 +42,7 @@ const Navigation = () => {
         <div className="md:hidden glass-panel mt-1 animate-fade-in">
           <div className="flex flex-col space-y-3 p-4">
             <MobileNavLink to="/" icon={<Home size={18} />} label="Home" onClick={toggleNavbar} />
-            <MobileNavLink to="/planets" icon={<Planet size={18} />} label="Planets" onClick={toggleNavbar} />
+            <MobileNavLink to="/planets" icon={<Globe size={18} />} label="Planets" onClick={toggleNavbar} />
             <MobileNavLink to="/about" icon={<Info size={18} />} label="About" onClick={toggleNavbar} />
             <MobileNavLink to="/missions" icon={<Rocket size={18} />} label="Missions" onClick={toggleNavbar} />
           </div>
