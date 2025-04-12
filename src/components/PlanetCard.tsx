@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PlanetInfo } from '@/lib/planetData';
 
@@ -12,6 +12,7 @@ interface PlanetCardProps {
 
 const PlanetCard = ({ planet, onClose }: PlanetCardProps) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'details' | 'moons'>('overview');
+  const [imageError, setImageError] = useState(false);
   
   const formatNumber = (num: number): string => {
     return num.toLocaleString();
@@ -42,12 +43,20 @@ const PlanetCard = ({ planet, onClose }: PlanetCardProps) => {
           </button>
           
           <div className="flex flex-col sm:flex-row gap-6 items-center mb-6">
-            <div className="w-32 h-32 flex-shrink-0">
-              <img 
-                src={planet.image || `/planets/${planet.id}.png`} 
-                alt={planet.name} 
-                className="w-full h-full object-contain animate-float"
-              />
+            <div className="w-32 h-32 flex-shrink-0 flex items-center justify-center">
+              {imageError ? (
+                <div className="text-center">
+                  <AlertTriangle className="mx-auto text-space-teal h-12 w-12 mb-1" />
+                  <span className="text-xs text-space-teal">{planet.name}</span>
+                </div>
+              ) : (
+                <img 
+                  src={planet.image || `/planets/${planet.id}.png`} 
+                  alt={planet.name} 
+                  className="w-full h-full object-contain animate-float"
+                  onError={() => setImageError(true)}
+                />
+              )}
             </div>
             
             <div>

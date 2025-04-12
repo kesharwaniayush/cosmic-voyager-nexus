@@ -4,12 +4,21 @@ import Navigation from '@/components/Navigation';
 import StarBackground from '@/components/StarBackground';
 import PlanetCard from '@/components/PlanetCard';
 import { planetData, PlanetInfo } from '@/lib/planetData';
-import { Search } from 'lucide-react';
+import { Search, AlertTriangle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
 const Planets = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPlanet, setSelectedPlanet] = useState<PlanetInfo | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  
+  // Handle image error
+  const handleImageError = (planetId: string) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [planetId]: true
+    }));
+  };
   
   // Filter planets based on search term
   const filteredPlanets = planetData.filter(planet => 
@@ -53,11 +62,19 @@ const Planets = () => {
             >
               <div className="flex justify-center mb-4">
                 <div className="w-32 h-32 flex items-center justify-center">
-                  <img 
-                    src={planet.image || `/planets/${planet.id}.png`} 
-                    alt={planet.name}
-                    className="max-w-full max-h-full animate-float"
-                  />
+                  {imageErrors[planet.id] ? (
+                    <div className="text-center">
+                      <AlertTriangle className="mx-auto text-space-teal h-10 w-10 mb-1" />
+                      <span className="text-xs text-space-teal">{planet.name}</span>
+                    </div>
+                  ) : (
+                    <img 
+                      src={planet.image || `/planets/${planet.id}.png`} 
+                      alt={planet.name}
+                      className="max-w-full max-h-full animate-float"
+                      onError={() => handleImageError(planet.id)}
+                    />
+                  )}
                 </div>
               </div>
               
