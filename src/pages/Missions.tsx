@@ -3,8 +3,10 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import StarBackground from '@/components/StarBackground';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, ExternalLink, Info } from 'lucide-react';
+import { Calendar, ExternalLink, Info, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Mission Data
 const missions = [
@@ -198,15 +200,55 @@ interface MissionCardProps {
 
 const MissionCard = ({ mission }: MissionCardProps) => {
   const [expanded, setExpanded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  
+  // Fallback images from Unsplash based on mission category
+  const getFallbackImage = () => {
+    switch(mission.category) {
+      case 'mars':
+        return 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81';
+      case 'deep-space':
+        return 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6';
+      case 'solar':
+        return 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b';
+      case 'observatory':
+        return 'https://images.unsplash.com/photo-1519389950473-47ba0277781c';
+      case 'planetary':
+      default:
+        return 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7';
+    }
+  };
   
   return (
     <div className="glass-panel overflow-hidden flex flex-col">
-      <div className="h-48 overflow-hidden">
-        <img 
-          src={mission.image} 
-          alt={mission.name} 
-          className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-        />
+      <div className="h-48 overflow-hidden relative">
+        {!imageLoaded && !imageError && (
+          <Skeleton className="w-full h-full absolute inset-0" />
+        )}
+        
+        {imageError ? (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-space-navy/50">
+            <AlertTriangle className="h-10 w-10 text-space-teal mb-2" />
+            <p className="text-sm text-space-teal">{mission.name} Image Unavailable</p>
+            <img 
+              src={getFallbackImage()} 
+              alt={`${mission.name} fallback`}
+              className="absolute inset-0 w-full h-full object-cover opacity-30"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        ) : (
+          <img 
+            src={mission.image} 
+            alt={mission.name} 
+            className={`w-full h-full object-cover transition-transform hover:scale-105 duration-500 ${!imageLoaded ? 'opacity-0' : 'opacity-100'}`}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageError(true)}
+          />
+        )}
       </div>
       
       <div className="p-5 flex-1 flex flex-col">
