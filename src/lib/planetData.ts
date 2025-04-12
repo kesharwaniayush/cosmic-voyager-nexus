@@ -1,5 +1,3 @@
-import { MoonInfo, PlanetInfo } from './planetData';
-
 export interface MoonInfo {
   name: string;
   diameter: number;
