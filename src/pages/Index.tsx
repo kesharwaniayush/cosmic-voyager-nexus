@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import StarBackground from '@/components/StarBackground';
 import SolarSystem from '@/components/SolarSystem';
+import VideoBackground from '@/components/VideoBackground';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +22,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen cosmos-bg flex flex-col">
-      <StarBackground starCount={300} />
+      <StarBackground starCount={150} />
+      <VideoBackground videoSrc="/planets/solar-system-video.mp4" fallbackImage="/planets/solar-system-poster.jpg" />
       <Navigation />
       
       <main className="flex-1 flex flex-col mt-16">
